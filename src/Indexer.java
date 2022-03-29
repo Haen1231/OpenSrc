@@ -16,19 +16,26 @@ public class Indexer {
     public static ArrayList<ArrayList<HashMap<String, String>>> dataList = new ArrayList<>(); //index 저장
     public static HashMap<String,String> keyMap = new HashMap<>();
     public static Set<String> keys;
+    public static String path="";
 
-    public static void init() throws IOException{
+    Indexer(String path){
+        this.path = path;
+    }
+
+    public static void init() throws IOException, ClassNotFoundException {
         FileOutputStream fileStream = new FileOutputStream("src/index.post");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileStream);
         keywordMap();
 
         objectOutputStream.writeObject(result);
         objectOutputStream.close();
+
+        fileInput();
     }
 
     public static void keywordMap(){
         try {
-            File file = new File("index.xml");
+            File file = new File(path);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = null;
             try {
@@ -105,13 +112,5 @@ public class Indexer {
             String value = (String) hashMap.get(key);
             System.out.println(key+"->"+value);
         }
-    }
-    public static void main(String[] args) throws ParserConfigurationException, IOException, TransformerException, ClassNotFoundException {
-        //makeCollectionFile();
-        //makeIndexFile();
-
-        init();
-        fileInput();
-
     }
 }

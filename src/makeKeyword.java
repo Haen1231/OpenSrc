@@ -21,11 +21,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class makeKeyword {
-    public static void makeIndexXML() throws TransformerException {
+    public static String path = "";
+    makeKeyword(String path){
+        this.path = path;
+    }
+    public static void convertXml() throws TransformerException {
         String testString ="꼬꼬마형테소분석기를 테스트 하고 있어여. 테스트 결과를 볼게요";
 
         try {
-            File file = new File("collection.xml");
+            File file = new File(path);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = null;
             try {

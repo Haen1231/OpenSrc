@@ -13,13 +13,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class makeCollection {
+    public static String path = "";
+    makeCollection(String path){
+        this.path = path;
+    }
     public static File[] makeFileList(String path) {
         File dir = new File(path);
         return dir.listFiles();
     }
 
     public static void makeFile() throws ParserConfigurationException, IOException, TransformerException{
-        String path = "src/data";
+
         File[] file = makeFileList(path);
 
         DocumentBuilderFactory docfactory = DocumentBuilderFactory.newInstance();
