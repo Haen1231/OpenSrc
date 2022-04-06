@@ -19,6 +19,17 @@ public class kuir {
         }else if(command.equals("-i")){
             Indexer indexer = new Indexer(path);
             indexer.init();
+        }else if(command.equals("-s")){
+            String postRoute = "src/" + args[1];
+            if(args[2].equals("-q")){
+                String query = args[3];
+                Searcher sr = new Searcher(postRoute, query);
+                sr.calcSim();
+            }else{
+                System.out.println("Query doesn't exist.");
+            }
         }
+
     }
+
 }

@@ -12,7 +12,7 @@ import java.io.*;
 import java.util.*;
 
 public class Indexer {
-    public static HashMap<String, String> result = new HashMap<>();
+    public static HashMap<String, String[]> result = new HashMap<>();
     public static ArrayList<ArrayList<HashMap<String, String>>> dataList = new ArrayList<>(); //index 저장
     public static HashMap<String,String> keyMap = new HashMap<>();
     public static Set<String> keys;
@@ -81,11 +81,13 @@ public class Indexer {
                 }
                 //가중치 계산
                 String resulttxt = "";
+                String[] resultarr = new String[5];
                 for(int j=0; j<N; j++){
                     weight[j] = Math.round( tf[j] * Math.log( N / dfx )* 100) / 100.0;
+                    resultarr[j] = String.valueOf(weight[j]);
                     resulttxt += j + " " + weight[j]+ " ";
                 }
-                result.put(key, resulttxt);
+                result.put(key, resultarr);
 
             }
 
@@ -109,8 +111,13 @@ public class Indexer {
 
         while (it.hasNext()){
             String key = it.next();
-            String value = (String) hashMap.get(key);
-            System.out.println(key+"->"+value);
+            String[] value = (String[]) hashMap.get(key);
+            System.out.print(key+"->");
+            for (int i = 0; i<5; i++){
+                System.out.print(value[i]);
+            }
+            System.out.println();
+            //System.out.println(key+"->"+value);
         }
     }
 }

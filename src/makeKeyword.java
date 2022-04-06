@@ -26,7 +26,7 @@ public class makeKeyword {
         this.path = path;
     }
     public static void convertXml() throws TransformerException {
-        String testString ="꼬꼬마형테소분석기를 테스트 하고 있어여. 테스트 결과를 볼게요";
+        String testString ="꼬꼬마형태소분석기를 테스트 하고 있어여. 테스트 결과를 볼게요";
 
         try {
             File file = new File(path);
