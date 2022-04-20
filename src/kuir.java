@@ -24,7 +24,7 @@ public class kuir {
             if(args[2].equals("-q")){
                 String query = args[3];
                 Searcher sr = new Searcher(postRoute, query);
-                sr.calcSim();
+                sr.innerProduct();
             }else{
                 System.out.println("Query doesn't exist.");
             }

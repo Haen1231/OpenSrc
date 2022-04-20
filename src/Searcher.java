@@ -34,7 +34,7 @@ public class Searcher {
         this.queryString = querySting;
     }
 
-    public static void calcSim() throws IOException, ClassNotFoundException {
+    public static void innerProduct() throws IOException, ClassNotFoundException {
         System.out.println(queryString);
         KeywordExtractor ke = new KeywordExtractor();
         KeywordList kl = ke.extractKeyword(queryString, true);
