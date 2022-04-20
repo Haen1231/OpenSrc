@@ -52,7 +52,6 @@ public class Searcher {
 
         HashMap hashMap = (HashMap) object;  //index.post 정보 저장
 
-        //innerProduct
         double sim = 0.0;
         double sim2 = 0.0;
         for(int i = 0; i< 5; i++) { //문서 인덱스
