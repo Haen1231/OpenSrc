@@ -22,8 +22,8 @@ import java.util.Scanner;
 
 public class Searcher {
     public static HashMap<String, Integer> query = new HashMap<>();
-    public static Double[][] calcResult = new Double[2][5];
     public static Double[][] innerResult = new Double[2][5];
+    public static Double[][] calcResult = new Double[2][5];
     public static int[] maxIndex = new int[3]; // 3개 index 저장
     public static ArrayList<String> titleList = new ArrayList<>();
     public static String path = "";
@@ -73,6 +73,24 @@ public class Searcher {
             }
             calcResult[1][i] = innerResult[1][i] / (Math.pow(sim, 1 / 2) * Math.pow(sim2, 1 / 2));
         }
+
+        //유사도 상위 3개 index 저장
+        for (int i=0; i< 3; i++){
+            double tmp = calcResult[0][i];  // max index 저장
+            int index = i;
+            for(int j = 0; j<5; j++){
+                if (tmp < calcResult[1][j]){
+                    tmp = calcResult[0][j];
+                    index = j;
+                }
+            }
+            calcResult[1][index] = -1.0;
+            maxIndex[i] = index;
+        }
+        printTitle();
+
+
+    }
 
     public static void printTitle(){
         try {
