@@ -22,6 +22,7 @@ import java.util.Scanner;
 
 public class Searcher {
     public static HashMap<String, Integer> query = new HashMap<>();
+    public static Double[][] calcResult = new Double[2][5];
     public static Double[][] innerResult = new Double[2][5];
     public static int[] maxIndex = new int[3]; // 3개 index 저장
     public static ArrayList<String> titleList = new ArrayList<>();
@@ -52,40 +53,26 @@ public class Searcher {
         HashMap hashMap = (HashMap) object;  //index.post 정보 저장
 
         //innerProduct
-        for(int i = 0; i< 5; i++){ //문서 인덱스
+        double sim = 0.0;
+        double sim2 = 0.0;
+        for(int i = 0; i< 5; i++) { //문서 인덱스
             innerResult[0][i] = Double.valueOf(i); // index저장
+            calcResult[0][i] = Double.valueOf(i);
             innerResult[1][i] = 0.0;
             Iterator<String> it = query.keySet().iterator();
             while (it.hasNext()) {
                 String key = it.next();
-                if(hashMap.containsKey(key)){
+                if (hashMap.containsKey(key)) {
                     String[] value = (String[]) hashMap.get(key);
                     int queryvalue = query.get(key);
                     String s = value[i];
                     innerResult[1][i] += (queryvalue * Double.parseDouble(s));
-                }
-                else innerResult[1][i] += 0.0;
+                    sim += Math.pow(queryvalue, 2);
+                    sim2 += Math.pow(Double.parseDouble(s), 2);
+                } else innerResult[1][i] += 0.0;
             }
-            //System.out.println("내적 결과: "+innerResult[i]);
+            calcResult[1][i] = innerResult[1][i] / (Math.pow(sim, 1 / 2) * Math.pow(sim2, 1 / 2));
         }
-
-        //유사도 상위 3개 index 저장
-        for (int i=0; i< 3; i++){
-            double tmp = innerResult[0][i];  // max index 저장
-            int index = i;
-            for(int j = 0; j<5; j++){
-                if (tmp < innerResult[1][j]){
-                    tmp = innerResult[0][j];
-                    index = j;
-                }
-            }
-            innerResult[1][index] = -1.0;
-            maxIndex[i] = index;
-        }
-        printTitle();
-
-
-    }
 
     public static void printTitle(){
         try {
