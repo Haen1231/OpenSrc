@@ -28,6 +28,16 @@ public class kuir {
             }else{
                 System.out.println("Query doesn't exist.");
             }
+        }else if(command.equals("-m")){
+            String postRoute = "src/" + args[1];
+            if(args[2].equals("-q")){
+                String query = args[3];
+                MidTerm mid = new MidTerm(query);
+                mid.showSnippet();
+
+            }else{
+                System.out.println("Query doesn't exist.");
+            }
         }
 
     }
@@ -35,10 +45,7 @@ public class kuir {
 }
 
 
-// -s
-//./index.post
-//-q
-//"라면에는 면과 스프가 있다. 아이스크림은 유럽에서 먹는 아이스크림이 맛있으며 면에는 국수, 라면, 짜장면 등이 존재한다. 떡은 한국의 고유 음식이다"
+// -s ./index.post -q "라면에는 면과 스프가 있다. 아이스크림은 유럽에서 먹는 아이스크림이 맛있으며 면에는 국수, 라면, 짜장면 등이 존재한다. 떡은 한국의 고유 음식이다"
 
 //test test
 
