@@ -31,8 +31,9 @@ public class MidTerm {
     public static int[][] result;
     public static String[][] resulttxt;
 
-    MidTerm(String path){
+    MidTerm(String path, String query){
         this.path = path;
+        queryString = query;
         showSnippet();
     }
 
@@ -103,7 +104,7 @@ public class MidTerm {
 
         for (int i=0; i< result.length;i++){
             for(int j=0; j< result[i].length; j++){
-                System.out.println(resulttxt[i][j]+","+resulttxt[i][j]);
+                System.out.println(resulttxt[i][j]+","+result[i][j]);
             }
         }
 

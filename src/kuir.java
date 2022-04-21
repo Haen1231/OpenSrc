@@ -32,7 +32,7 @@ public class kuir {
             String postRoute = "src/" + args[1];
             if(args[2].equals("-q")){
                 String query = args[3];
-                MidTerm mid = new MidTerm(query);
+                MidTerm mid = new MidTerm(postRoute, query);
                 mid.showSnippet();
 
             }else{
