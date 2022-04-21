@@ -101,5 +101,11 @@ public class MidTerm {
 
         }
 
+        for (int i=0; i< result.length;i++){
+            for(int j=0; j< result[i].length; j++){
+                System.out.println(resulttxt[i][j]+","+resulttxt[i][j]);
+            }
+        }
+
     }
 }
